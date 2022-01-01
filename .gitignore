@@ -1,0 +1,6 @@
+# Ignored Files
+.idea/
+.gradle/
+out/
+build/
+*.iml
