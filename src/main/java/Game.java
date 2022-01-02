@@ -26,7 +26,7 @@ public class Game {
 
     Game() throws IOException, URISyntaxException, FontFormatException {
         fontSize = 25;
-        field = new Field();
+        field = new Field(60,30);
         Font font = loadFont();
         GraphicsEnvironment ge = GraphicsEnvironment.getLocalGraphicsEnvironment();
         ge.registerFont(font);

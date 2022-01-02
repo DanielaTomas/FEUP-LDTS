@@ -1,15 +1,35 @@
 import com.googlecode.lanterna.graphics.TextGraphics;
 import com.googlecode.lanterna.input.KeyStroke;
 
+import java.util.ArrayList;
+import java.util.List;
+
 public class Field {
+    private int width;
+    private int height;
     private Sheep sheep;
+    private List<Fence> fences;
 
-    public Field() {
+    public Field(int width, int height) {
+       this.width = width;
+       this.height = height;
        sheep = new Sheep(10,10);
+       fences = createFence();
     }
+    private List<Fence> createFence() {
+        List<Fence> fences = new ArrayList<>();
+        for (int c = 0; c < width; c++) {
+            fences.add(new Fence(c, 0));
+            fences.add(new Fence(c, height - 1));
+        }
+        for (int r = 1; r < height - 1; r++) {
+            fences.add(new Fence(0, r));
+            fences.add(new Fence(width - 1, r));
+        }
+        return fences;
 
+    }
     void processKey(KeyStroke key, TextGraphics graphics) {
-        draw(graphics);
         switch(key.getKeyType()) {
             case ArrowUp:
                 moveSheep(sheep.moveUp());
@@ -24,6 +44,7 @@ public class Field {
                 moveSheep(sheep.moveLeft());
                 break;
         }
+        draw(graphics);
     }
 
     void moveSheep(Position position) {
@@ -32,5 +53,7 @@ public class Field {
 
     public void draw(TextGraphics graphics) {
         sheep.draw(graphics);
+        for(Fence fence : fences)
+            fence.draw(graphics);
     }
 }
