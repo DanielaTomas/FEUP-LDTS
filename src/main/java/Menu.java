@@ -14,7 +14,6 @@ public class Menu {
         isSelected = true;
         draw(graphics);
     }
-
     void processKey(KeyStroke key,TextGraphics graphics) {
         graphics.setForegroundColor(TextColor.Factory.fromString("#DAA520"));
         switch(key.getKeyType()) {
@@ -29,7 +28,6 @@ public class Menu {
                 break;
         }
     }
-
     private void selectDown(TextGraphics graphics) {
         selected = 2;
         graphics.setBackgroundColor(TextColor.Factory.fromString("#000000"));
@@ -49,6 +47,7 @@ public class Menu {
         drawString(graphics,26,15,"Exit");
     }
     public void draw(TextGraphics graphics) {
+        graphics.fillRectangle(new TerminalPosition(25, 9), new TerminalSize(7, 3), ' ');
         graphics.enableModifiers(SGR.BOLD);
         graphics.setForegroundColor(TextColor.Factory.fromString("#DAA520"));
         drawString(graphics,21,5,"The Sheep's Escape");

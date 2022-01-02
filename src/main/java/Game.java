@@ -19,18 +19,14 @@ import java.net.URL;
 
 public class Game {
     private Screen screen;
-    private int width;  //terminal width
-    private int height; //terminal height
     private int fontSize;
-    //private Field field;
+    private Field field;
     private Menu menu;
     private TextGraphics graphics;
 
-    Game(int width, int height) throws IOException, URISyntaxException, FontFormatException {
-        this.width = width;
-        this.height = height;
+    Game() throws IOException, URISyntaxException, FontFormatException {
         fontSize = 25;
-        //field = new Field();
+        field = new Field();
         Font font = loadFont();
         GraphicsEnvironment ge = GraphicsEnvironment.getLocalGraphicsEnvironment();
         ge.registerFont(font);
@@ -39,7 +35,7 @@ public class Game {
         AWTTerminalFontConfiguration fontConfig = AWTTerminalFontConfiguration.newInstance(loadedFont);
         factory.setTerminalEmulatorFontConfiguration(fontConfig);
         factory.setForceAWTOverSwing(true);
-        factory.setInitialTerminalSize(new TerminalSize(width, height));
+        factory.setInitialTerminalSize(new TerminalSize(60, 30));
         Terminal terminal = factory.createTerminal();
         ((AWTTerminalFrame)terminal).addWindowListener(new WindowAdapter() {
             @Override
@@ -79,34 +75,26 @@ public class Game {
     }
 
     private void processKey(KeyStroke key) throws IOException {
-        if(menu.isSelected())
-           menu.processKey(key, graphics);
-        if(!menu.isSelected())
-           if(menu.getSelected() == 1) {
-                screen.clear();
-            }
-            else if(menu.getSelected() == 2) {
-                screen.close();
-            }
-        //field.processKey(key);
+        if (menu.isSelected()) menu.processKey(key, graphics);
+        if (!menu.isSelected()){
+            processKeyMenu(key);
+        }
+
     }
 
-    public int getWidth() {
-        return width;
+    private void processKeyMenu(KeyStroke key) throws IOException {
+        if (menu.getSelected() == 1) {
+            screen.clear();
+            field.processKey(key, graphics);
+            screen.refresh();
+        }
+        else if (menu.getSelected() == 2) {
+            screen.close();
+        }
+
     }
-    public int getHeight() {
-        return height;
-    }
-    public int getFontSize() {
-        return fontSize;
-    }
-    public void setWidth(int width) {
-        this.width = width;
-    }
-    public void setHeight(int height) {
-        this.height = height;
-    }
+
     public void setFontSize(int fontSize) {
-        this.fontSize= fontSize;
+        this.fontSize = fontSize;
     }
 }
