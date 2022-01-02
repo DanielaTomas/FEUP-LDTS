@@ -16,19 +16,6 @@ public class Field {
        sheep = new Sheep(10,10);
        fences = createFence();
     }
-    private List<Fence> createFence() {
-        List<Fence> fences = new ArrayList<>();
-        for (int c = 0; c < width; c++) {
-            fences.add(new Fence(c, 0));
-            fences.add(new Fence(c, height - 1));
-        }
-        for (int r = 1; r < height - 1; r++) {
-            fences.add(new Fence(0, r));
-            fences.add(new Fence(width - 1, r));
-        }
-        return fences;
-
-    }
     void processKey(KeyStroke key, TextGraphics graphics) {
         switch(key.getKeyType()) {
             case ArrowUp:
@@ -46,14 +33,36 @@ public class Field {
         }
         draw(graphics);
     }
-
     void moveSheep(Position position) {
-         sheep.setPosition(position);
+        if (canSheepMove(position))
+            sheep.setPosition(position);
     }
 
     public void draw(TextGraphics graphics) {
         sheep.draw(graphics);
         for(Fence fence : fences)
             fence.draw(graphics);
+    }
+
+    private List<Fence> createFence() {
+        List<Fence> fences = new ArrayList<>();
+        for (int c = 0; c < width; c++) {
+            fences.add(new Fence(c, 0));
+            fences.add(new Fence(c, height - 1));
+        }
+        for (int r = 1; r < height - 1; r++) {
+            fences.add(new Fence(0, r));
+            fences.add(new Fence(width - 1, r));
+        }
+        return fences;
+    }
+    private boolean canSheepMove(Position position) {
+        if(position.getX() >= 0 && position.getX() <= width && position.getY() >= 0 && position.getY() <= height) {
+            for(Fence fence : fences) {
+                if(fence.getPosition().equals(position)) return false;
+            }
+            return true;
+        }
+        return false;
     }
 }

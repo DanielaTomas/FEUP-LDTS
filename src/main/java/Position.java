@@ -6,6 +6,14 @@ public class Position {
         this.x = x;
         this.y = y;
     }
+    @Override
+    public boolean equals(Object o) {
+        if (this == o) return true;
+        if (o == null) return false;
+        if (getClass() != o.getClass()) return false;
+        Position p = (Position) o;
+        return x == p.getX() && y == p.getY();
+    }
 
     public int getX() {
       return x;
