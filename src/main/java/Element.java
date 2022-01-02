@@ -1,5 +1,7 @@
 import com.googlecode.lanterna.graphics.TextGraphics;
 
+import java.util.Random;
+
 public abstract class Element {
     private Position position;
 
