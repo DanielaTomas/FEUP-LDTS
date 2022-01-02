@@ -3,8 +3,6 @@ import com.googlecode.lanterna.TerminalPosition;
 import com.googlecode.lanterna.TextColor;
 import com.googlecode.lanterna.graphics.TextGraphics;
 
-import java.awt.*;
-
 public class Sheep extends Element{
 
     public Sheep(int x, int y) {
