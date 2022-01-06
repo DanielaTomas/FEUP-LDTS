@@ -2,7 +2,6 @@ import com.googlecode.lanterna.SGR;
 import com.googlecode.lanterna.TerminalPosition;
 import com.googlecode.lanterna.TextColor;
 import com.googlecode.lanterna.graphics.TextGraphics;
-
 import java.util.Random;
 
 public class Wolf extends Element{
@@ -12,7 +11,7 @@ public class Wolf extends Element{
 
     @Override
     public void draw(TextGraphics graphics) {
-        graphics.setForegroundColor(TextColor.Factory.fromString("#32CD32"));
+        graphics.setForegroundColor(TextColor.Factory.fromString("#FF0000"));
         graphics.enableModifiers(SGR.BOLD);
         graphics.putString(new TerminalPosition(getPosition().getX(), getPosition().getY()),"L");
     }

@@ -5,7 +5,7 @@ import com.googlecode.lanterna.TextColor;
 import com.googlecode.lanterna.graphics.TextGraphics;
 import com.googlecode.lanterna.input.KeyStroke;
 
-public class Menu {
+public class Menu implements Command {
     private int selected;
     private boolean isSelected;
 
@@ -14,17 +14,19 @@ public class Menu {
         isSelected = true;
         draw(graphics);
     }
-    void processKey(KeyStroke key,TextGraphics graphics) {
+    public void processKey(KeyStroke key, TextGraphics graphics) {
         graphics.setForegroundColor(TextColor.Factory.fromString("#DAA520"));
         switch(key.getKeyType()) {
             case ArrowDown:
-                if(getSelected() == 1) selectDown(graphics);
+                if(selected == 1) selectDown(graphics);
                 break;
             case ArrowUp:
-                if(getSelected() == 2) selectUp(graphics);
+                if(selected == 2) selectUp(graphics);
                 break;
             case Enter:
                 isSelected = false;
+                break;
+            default:
                 break;
         }
     }
@@ -59,7 +61,11 @@ public class Menu {
     public int getSelected() {
         return selected;
     }
+    public void setSelected(int selected) {
+        this.selected = selected;
+    }
     public boolean isSelected() {
         return isSelected;
     }
 }
+

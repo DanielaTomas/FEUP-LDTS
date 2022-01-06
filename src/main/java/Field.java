@@ -1,11 +1,11 @@
 import com.googlecode.lanterna.graphics.TextGraphics;
 import com.googlecode.lanterna.input.KeyStroke;
-
 import java.util.ArrayList;
 import java.util.List;
 import java.util.Random;
+import java.util.concurrent.TimeUnit;
 
-public class Field {
+public class Field implements Command {
     private int width;
     private int height;
     private Sheep sheep;
@@ -13,41 +13,48 @@ public class Field {
     private List<Wolf> wolves;
 
     public Field(int width, int height) {
-       this.width = width;
-       this.height = height;
-       sheep = new Sheep(10,10);
-       fences = createFences();
-       wolves = createWolves();
+        this.width = width;
+        this.height = height;
+        sheep = new Sheep(1, 1);
+        fences = createFences();
+        wolves = createWolves();
     }
-    void processKey(KeyStroke key, TextGraphics graphics) {
-        switch(key.getKeyType()) {
+
+    public void processKey(KeyStroke key, TextGraphics graphics) {
+        switch (key.getKeyType()) {
             case ArrowUp:
-                moveSheep(sheep.moveUp());
+                moveSheep(sheep.moveUp(), 1);
                 moveWolves();
                 break;
             case ArrowDown:
-                moveSheep(sheep.moveDown());
-                moveWolves();
-                break;
-            case ArrowRight:
-                moveSheep(sheep.moveRight());
+                moveSheep(sheep.moveDown(), 2);
                 moveWolves();
                 break;
             case ArrowLeft:
-                moveSheep(sheep.moveLeft());
+                moveSheep(sheep.moveLeft(), 3);
                 moveWolves();
+                break;
+            case ArrowRight:
+                moveSheep(sheep.moveRight(), 4);
+                moveWolves();
+                break;
+            default:
                 break;
         }
         draw(graphics);
     }
-    void moveSheep(Position position) {
-        if (canSheepMove(position))
+
+    public void moveSheep(Position position, int direction) {
+        if (canMove(position)) {
             sheep.setPosition(position);
+            sheep.setDirection(direction);
+        }
     }
+
     private void moveWolves() {
-        for(Wolf wolves : wolves) {
+        for (Wolf wolves : wolves) {
             Position p = wolves.move();
-            while(!canWolvesMove(p)) {
+            while (!canMove(p)) {
                 p = wolves.move();
             }
             wolves.setPosition(p);
@@ -56,13 +63,15 @@ public class Field {
 
     public void draw(TextGraphics graphics) {
         sheep.draw(graphics);
-        for(Fence fence : fences)
+        for (Fence fence : fences)
             fence.draw(graphics);
-        for(Wolf wolf : wolves)
+        for (Wolf wolf : wolves)
             wolf.draw(graphics);
+
+        sheep.draw(graphics);
     }
 
-    private List<Fence> createFences() {
+    public List<Fence> createFences() {
         List<Fence> fences = new ArrayList<>();
         for (int c = 0; c < width; c++) {
             fences.add(new Fence(c, 0));
@@ -75,30 +84,25 @@ public class Field {
         return fences;
     }
     private List<Wolf> createWolves() {
-            Random random = new Random();
-            ArrayList<Wolf> wolves = new ArrayList<>();
-            for (int i = 0; i < 5; i++) {
-                wolves.add(new Wolf(random.nextInt(width - 2) + 1, random.nextInt(height - 2) + 1));
-            }
-            return wolves;
+        Random random = new Random();
+        ArrayList<Wolf> wolves = new ArrayList<>();
+        for (int i = 0; i < 5; i++) {
+            wolves.add(new Wolf(random.nextInt(width - 2) + 1, random.nextInt(height - 2) + 1));
+        }
+        return wolves;
 
     }
-    private boolean canSheepMove(Position position) {
-        if(position.getX() >= 0 && position.getX() <= width && position.getY() >= 0 && position.getY() <= height) {
-            for(Fence fence : fences) {
-                if(fence.getPosition().equals(position)) return false;
-            }
+
+    public boolean canMove(Position position) {
+        if (position.getX() >= 0 && position.getX() <= width && position.getY() >= 0 && position.getY() <= height) {
+            for (Fence fence : fences)
+                if (fence.getPosition().equals(position)) return false;
             return true;
         }
         return false;
     }
-    private boolean canWolvesMove(Position position) {
-        if(position.getX() >= 0 && position.getX() <= width && position.getY() >= 0 && position.getY() <= height) {
-            for(Fence fence : fences) {
-                if(fence.getPosition().equals(position)) return false;
-            }
-            return true;
-        }
-        return false;
+
+    public Sheep getSheep() {
+        return this.sheep;
     }
 }

@@ -1,3 +1,5 @@
+import java.util.Objects;
+
 public class Position {
     private int x;
     private int y;
@@ -14,7 +16,10 @@ public class Position {
         Position p = (Position) o;
         return x == p.getX() && y == p.getY();
     }
-
+    @Override
+    public int hashCode() {
+        return Objects.hash(x,y);
+    }
     public int getX() {
       return x;
     }
