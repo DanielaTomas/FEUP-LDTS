@@ -26,9 +26,6 @@ Project developed by  Daniela Tomás (up202004946@edu.fc.up.pt), Nuno Penafort (
 ## Design
 
 ### General Structure
-
-
-
 #### Problem in Context:
 Since our game is a GUI our first concern was how the structure woul look like.
 
@@ -41,17 +38,6 @@ Regarding the implementtaion at the moment we have classes that control the logi
 ![Controller and viewer drawio](https://user-images.githubusercontent.com/93272180/148597981-2d5c6124-0b73-4c30-a347-ea5b1fd58d22.png)
 
 #### Consequences:
-
-### Field Builder
-#### Problem in Context:
-In the field there are various elements such as sheeps, wolves and walls.
-
-#### The Pattern:
-
-#### Implementation:
-
-#### Consequences:
-
 
 
 
