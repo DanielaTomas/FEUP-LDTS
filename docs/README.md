@@ -1,4 +1,4 @@
-# ldts-project-assignment-g0205
+# LDTS_G0205 - The Sheep's Escape
 
 ## Game Description
 
