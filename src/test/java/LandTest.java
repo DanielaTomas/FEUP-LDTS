@@ -11,7 +11,6 @@ import static org.mockito.Mockito.times;
 public class LandTest {
     @Test
     public void landTest() {
-
         Land land = new Land(new int[60][30]);
         int[][] temp = new int[60][30];
         int[][] matrix = land.getMatrix();
@@ -22,6 +21,5 @@ public class LandTest {
         temp[2][2] = 2;
         land.setType(2,2,2);
         assertEquals(temp[2][2],land.getType(2,2));
-
     }
 }
