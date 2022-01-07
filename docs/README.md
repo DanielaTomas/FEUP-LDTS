@@ -34,9 +34,13 @@ We used the **_Command Pattern_** that encapsulate a request as an object thereb
 #### Implementation:
 Regarding the implementtaion at the moment we have:
 
-![Structure drawio-2](https://user-images.githubusercontent.com/93272180/148602177-e9e977fc-7890-4c77-88dd-0f9eab03f909.png)
+![Structure element drawio](https://user-images.githubusercontent.com/93272180/148604243-429fe218-c4c0-429d-937b-a2425168bebd.png)
 
 #### Consequences:
+- Decouples the object that invokes the operation from the one that knows how to perform it.
+- Commands can be extended and manipulated like any other object.
+- You can create Composite commands.
+- It's easy to add new commands.
 
 ### Field
 #### Problem in Context:
@@ -48,10 +52,13 @@ We used the **_Strategy Pattern_** that defines a family of algorithms, encapsul
 #### Implementation:
 Regarding the implementtaion at the moment we have:
 
-
+![Structure field drawio-2 drawio](https://user-images.githubusercontent.com/93272180/148604210-081d7006-6598-45a3-8053-c01a1eaa60e0.png)
 
 #### Consequences:
-
+- An alternative to subclassing.
+- Eliminates conditional statements.
+- Provides different implementations.
+- Clients must be aware of different strategies.
 
 
 
