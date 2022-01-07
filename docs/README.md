@@ -26,13 +26,28 @@ Project developed by  Daniela Tomás (up202004946@edu.fc.up.pt), Nuno Penafort (
 ## Design
 ### General Structure
 #### Problem in Context:
-Since our game is a GUI our first concern was how the structure woul look like.
+Since our game is a GUI our first concern was how the structure would look like.
 
 #### The Pattern:
-We used the **_Architectural Pattern_** that is usually used in a GUI.
+We used the **_Command Pattern_** that encapsulate a request as an object thereby letting you parameterize clients with different requests.
 
 #### Implementation:
 Regarding the implementtaion at the moment we have:
+
+![Structure drawio-2](https://user-images.githubusercontent.com/93272180/148602177-e9e977fc-7890-4c77-88dd-0f9eab03f909.png)
+
+#### Consequences:
+
+### Field
+#### Problem in Context:
+Since our game is a GUI our first concern was how the structure woul look like.
+
+#### The Pattern:
+We used the **_Strategy Pattern_** that defines a family of algorithms, encapsulate each one, and make them interchangeable.
+
+#### Implementation:
+Regarding the implementtaion at the moment we have:
+
 
 
 #### Consequences:
