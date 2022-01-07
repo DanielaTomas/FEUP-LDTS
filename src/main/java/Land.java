@@ -14,5 +14,6 @@ public class Land {
     }
     public void setType(int i, int j, int type) {
         this.matrix[i][j] = type;
+        Grass grass;
     }
 }

@@ -9,15 +9,32 @@ public class Field implements Command {
     private int width;
     private int height;
     private Sheep sheep;
-    private List<Fence> fences;
     private List<Wolf> wolves;
+    private Land land;
+    private List<LandTransformer> transformer;
 
     public Field(int width, int height) {
         this.width = width;
         this.height = height;
         sheep = new Sheep(1, 1);
-        fences = createFences();
         wolves = createWolves();
+        transformer = createTypes();
+        int[][] map = new int[60][30];
+        land = new Land(map);
+    }
+
+    private List<LandTransformer> createTypes() {
+        List<LandTransformer> t = new ArrayList<>();
+        for (int c = 0; c < width; c++) {
+            t.add(new Fence(c, 0));
+            t.add(new Fence(c, height - 1));
+        }
+        for (int r = 1; r < height - 1; r++) {
+            t.add(new Fence(0, r));
+            t.add(new Fence(width - 1, r));
+        }
+        //continuar para grass e trail
+        return t;
     }
 
     public void processKey(KeyStroke key, TextGraphics graphics) {
@@ -63,25 +80,12 @@ public class Field implements Command {
 
     public void draw(TextGraphics graphics) {
         sheep.draw(graphics);
-        for (Fence fence : fences)
-            fence.draw(graphics);
+      /*  for (Fence fence : fences)
+            fence.draw(graphics); */
         for (Wolf wolf : wolves)
             wolf.draw(graphics);
 
         sheep.draw(graphics);
-    }
-
-    public List<Fence> createFences() {
-        List<Fence> fences = new ArrayList<>();
-        for (int c = 0; c < width; c++) {
-            fences.add(new Fence(c, 0));
-            fences.add(new Fence(c, height - 1));
-        }
-        for (int r = 1; r < height - 1; r++) {
-            fences.add(new Fence(0, r));
-            fences.add(new Fence(width - 1, r));
-        }
-        return fences;
     }
     private List<Wolf> createWolves() {
         Random random = new Random();
@@ -92,11 +96,10 @@ public class Field implements Command {
         return wolves;
 
     }
-
     public boolean canMove(Position position) {
         if (position.getX() >= 0 && position.getX() <= width && position.getY() >= 0 && position.getY() <= height) {
-            for (Fence fence : fences)
-                if (fence.getPosition().equals(position)) return false;
+          /*  for (Fence fence : fences)
+                if (fence.getPosition().equals(position)) return false;*/
             return true;
         }
         return false;
