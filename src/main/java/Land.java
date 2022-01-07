@@ -1,18 +1,18 @@
-import com.googlecode.lanterna.SGR;
-import com.googlecode.lanterna.TerminalPosition;
-import com.googlecode.lanterna.TextColor;
-import com.googlecode.lanterna.graphics.TextGraphics;
-
-public class Land extends Element{
-
-    Land(int x, int y) {
-        super(x,y);
+public class Land {
+    int[][] matrix;
+    Land(int[][] m) {
+        this.matrix = new int[60][30];
+        for(int i = 0; i < 60; i++)
+            for(int j = 0; j < 30; j++)
+               this.matrix[i][j] = m[i][j];
     }
-
-    @Override
-    public void draw(TextGraphics graphics) {
-        graphics.setForegroundColor(TextColor.Factory.fromString("#336699"));
-        graphics.enableModifiers(SGR.BOLD);
-        graphics.putString(new TerminalPosition(getPosition().getX(), getPosition().getY()),"#");
+    public int[][] getMatrix() {
+        return matrix;
+    }
+    public int getType(int i, int j){
+       return matrix[i][j];
+    }
+    public void setType(int i, int j, int type) {
+        this.matrix[i][j] = type;
     }
 }
