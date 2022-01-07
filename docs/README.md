@@ -19,14 +19,3 @@ Project developed by  Daniela Tomás (up202004946@edu.fc.up.pt), Nuno Penafort (
 
 - **Connected Menus** - The user has the capability of browsing through different menus (Ex: Main Menu and Pause).
 - **Special Items** - The game will have special items that give temporary abilities to the player.
-
-## Design
-
-### General Structure
-#### Problem in Context:
-The first concern of our project was how the structure would look like...
-
-### The Pattern
-There were applied two main patterns, the **_Architectural Pattern_**, to know how the game would look like and the **_State Pattern_**, this pattern lets an object alter its behavior.
-
-### Implementation:
