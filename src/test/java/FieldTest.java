@@ -76,4 +76,5 @@ public class FieldTest {
         field.getSheep().setPosition(new Position(100,50));
         assertFalse(field.canMove(new Position(100,50)));
     }
+
 }

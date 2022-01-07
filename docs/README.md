@@ -19,4 +19,4 @@ Project developed by  Daniela Tomás (up202004946@edu.fc.up.pt), Nuno Penafort (
 
 - **Connected Menus** - The user has the capability of browsing through different menus (Ex: Main Menu and Pause).
 - **Special Items** - The game will have special items that give temporary abilities to the player.
-- **Add more tests**
+- 
