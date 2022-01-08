@@ -52,7 +52,7 @@ We used the **_Strategy Pattern_** that defines a family of algorithms, encapsul
 #### Implementation:
 Regarding the implementation at the moment we have:
 
-![Structure field drawio-2 drawio](https://user-images.githubusercontent.com/93272180/148604210-081d7006-6598-45a3-8053-c01a1eaa60e0.png)
+![Structure field drawio-2 drawio](https://github.com/FEUP-LDTS-2021/ldts-project-assignment-g0205/blob/main/docs/command.jpg/)
 
 #### Consequences:
 - An alternative to subclassing.
