@@ -2,7 +2,7 @@
 
 ## Game Description
 
-The Sheep's Escape is a text-based game where you control a sheep. You have to fill the land with grass so that the sheep hides from the wolves. If you fill 80% of the land you win and if wolves hits you or your trail you die.
+The Sheep's Escape is a text-based game where you control a sheep. You have to fill the land with grass so that the sheep hides from wolves. If you fill 80% of the land you win and if wolves hits you or your trail you die.
 
 Project developed for LDTS 2021-22 by 
 

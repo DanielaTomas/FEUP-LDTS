@@ -97,7 +97,7 @@ public class Field implements Command {
 
     }
     public boolean canMove(Position position) {
-        if (position.getX() >= 0 && position.getX() <= width && position.getY() >= 0 && position.getY() <= height) {
+        if (position.getX() >= 0 && position.getX() <= width-1 && position.getY() >= 0 && position.getY() <= height-1) {
           /*  for (Fence fence : fences)
                 if (fence.getPosition().equals(position)) return false;*/
             return true;

@@ -34,11 +34,6 @@ public class FieldTest {
         KeyStroke key = new KeyStroke(KeyType.ArrowUp);
         field.processKey(key, graphics);
 
-        assertEquals(0,field.getSheep().getDirection());
-
-        field.getSheep().setPosition(new Position(10,10));
-        field.processKey(key, graphics);
-
         assertEquals(1,field.getSheep().getDirection());
     }
     @Test
@@ -53,11 +48,6 @@ public class FieldTest {
     public void processLeft() {
         Field field = new Field(60,30);
         KeyStroke key = new KeyStroke(KeyType.ArrowLeft);
-        field.processKey(key, graphics);
-
-        assertEquals(0,field.getSheep().getDirection());
-
-        field.getSheep().setPosition(new Position(10,10));
         field.processKey(key, graphics);
 
         assertEquals(3,field.getSheep().getDirection());

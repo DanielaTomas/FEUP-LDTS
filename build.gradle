@@ -1,6 +1,7 @@
 plugins {
     id 'java'
     id 'application'
+    id 'info.solidsoft.pitest' version '1.6.0'
     id "org.kordamp.gradle.errorprone" version "0.47.0"
 }
 
@@ -21,4 +22,9 @@ dependencies {
 test {
     useJUnitPlatform()
 }
+
+pitest {
+    junit5PluginVersion = '0.12'
+}
+
 mainClassName = 'Application'
