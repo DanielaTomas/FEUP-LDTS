@@ -4,8 +4,8 @@ import com.googlecode.lanterna.TextColor;
 import com.googlecode.lanterna.graphics.TextGraphics;
 
 public class Fence extends Element implements LandTransformer{
-    int x;
-    int y;
+    private int x;
+    private int y;
     Fence(int x, int y) {
         super(x,y);
         this.x=x;

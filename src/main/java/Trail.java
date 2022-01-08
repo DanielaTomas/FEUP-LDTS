@@ -5,8 +5,8 @@ import com.googlecode.lanterna.graphics.TextGraphics;
 
 
 public class Trail extends Element implements LandTransformer {
-        int x;
-        int y;
+        private int x;
+        private int y;
         Trail(int x, int y) {
             super(x, y);
             this.x = x;
