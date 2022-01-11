@@ -6,8 +6,6 @@ The Sheep's Escape is a text-based game where you control a sheep. You have to f
 
 Project developed by  Daniela Tomás (up202004946@edu.fc.up.pt), Nuno Penafort (up202008405@edu.fc.up.pt) and Sofia Sousa (up202005932@edu.fc.up.pt) for LDTS 2021-22.
 
-[Full Report](./docs/README.md).
-
 ## Implemented Features
 
 - **Buttons** - Functional and interactive buttons.
