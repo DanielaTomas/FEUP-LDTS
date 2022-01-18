@@ -12,4 +12,20 @@ Sofia Sousa (up202005932@edu.fc.up.pt).
 
 [Full Report](./docs/README.md).
 
+## Screenshots
 
+The following screenshots show the general look of our game.
+
+### Menu
+
+[![Menu](https://user-images.githubusercontent.com/93272180/149989655-b48d6f7a-151b-4698-b018-67a9d8bb2c7b.jpeg)](./docs/Images/Screenshots)
+
+### Game
+
+[![Game](https://user-images.githubusercontent.com/93272180/149990293-7d5580ba-9a19-45eb-9e03-8d6f46eb2f7d.jpeg)](./docs/Images/Screenshots)
+
+[![Playing game](https://user-images.githubusercontent.com/93272180/149990001-ca9d16a6-68d3-447c-a3dd-0c09d54e0c56.jpeg)](./docs/Images/Screenshots)
+
+### Game Over
+
+[![Game Over](https://user-images.githubusercontent.com/93272180/149990439-0805f40d-611e-4719-88a2-326068fb5a3d.jpeg)](./docs/Images/Screenshots)
