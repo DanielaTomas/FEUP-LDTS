@@ -32,7 +32,7 @@ We used the **_Command Pattern_** that encapsulate a request as an object thereb
 #### Implementation:
 Regarding the implementation at the moment we have:
 
-![Structure element drawio](https://github.com/FEUP-LDTS-2021/ldts-project-assignment-g0205/blob/main/docs/Structure%20field.drawio-2.drawio.png)
+[![Structure field](https://user-images.githubusercontent.com/93272180/149991373-a73731e2-4687-4187-bbfd-2011c7ed1f6c.png)](./docs/Images/UML)
 
 #### Consequences:
 - Decouples the object that invokes the operation from the one that knows how to perform it.
@@ -50,7 +50,7 @@ We used the **_Strategy Pattern_** that defines a family of algorithms, encapsul
 #### Implementation:
 Regarding the implementation at the moment we have:
 
-![Structure field drawio-2 drawio](https://github.com/FEUP-LDTS-2021/ldts-project-assignment-g0205/blob/main/docs/command.jpg)
+[![command](https://user-images.githubusercontent.com/93272180/149991465-0b3e31b5-a559-4f60-bb05-7a072f776457.jpg)](./docs/Images/UML)
 
 #### Consequences:
 - An alternative to subclassing.
