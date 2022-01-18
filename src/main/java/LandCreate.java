@@ -1,6 +1,6 @@
 import java.util.List;
 public class LandCreate {
-    List<LandTransformer> transformers;
+    private List<LandTransformer> transformers;
 
     LandCreate(List<LandTransformer> transformers) {
         this.transformers = transformers;

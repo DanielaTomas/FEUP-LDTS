@@ -24,9 +24,9 @@ public class Sheep extends Element{
     }
     @Override
     public void draw(TextGraphics graphics) {
-       graphics.setForegroundColor(TextColor.Factory.fromString("#FFFF33"));
-       graphics.enableModifiers(SGR.BOLD);
-       graphics.putString(new TerminalPosition(getPosition().getX(), getPosition().getY()),"O");
+       graphics.setForegroundColor(TextColor.Factory.fromString("#FFFAFA"));
+       graphics.disableModifiers(SGR.BOLD);
+       graphics.putString(new TerminalPosition(getPosition().getX(), getPosition().getY()),"@");
    }
     public int getDirection() {
         return direction;
@@ -34,5 +34,4 @@ public class Sheep extends Element{
     public void setDirection(int direction) {
         this.direction = direction;
    }
-
 }

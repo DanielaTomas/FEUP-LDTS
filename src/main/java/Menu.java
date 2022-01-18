@@ -14,6 +14,8 @@ public class Menu implements Command {
         isSelected = true;
         draw(graphics);
     }
+
+    @Override
     public void processKey(KeyStroke key, TextGraphics graphics) {
         graphics.setForegroundColor(TextColor.Factory.fromString("#DAA520"));
         switch(key.getKeyType()) {
@@ -66,6 +68,9 @@ public class Menu implements Command {
     }
     public boolean isSelected() {
         return isSelected;
+    }
+    public void setIsSelected(boolean isSelected) {
+        this.isSelected = isSelected;
     }
 }
 
