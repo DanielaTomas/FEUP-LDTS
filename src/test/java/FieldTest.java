@@ -8,16 +8,12 @@ import com.googlecode.lanterna.terminal.DefaultTerminalFactory;
 import com.googlecode.lanterna.terminal.Terminal;
 import org.junit.jupiter.api.BeforeAll;
 import org.junit.jupiter.api.Test;
-import org.mockito.ArgumentCaptor;
-import org.mockito.Mockito;
 
 import java.io.IOException;
-import java.util.ArrayList;
+import java.util.Arrays;
 import java.util.List;
-import java.util.Random;
 
 import static org.junit.jupiter.api.Assertions.*;
-import static org.mockito.Mockito.*;
 
 public class FieldTest {
     private static Terminal terminal;
@@ -140,4 +136,59 @@ public class FieldTest {
         field.getWolves().clear();
         assertEquals(5, field.createWolves().size());
     }
+
+    @Test
+    public void gameOver1() {
+        Field field = new Field(60, 30);
+
+        assertFalse(field.gameOver());
+
+        field.getSheep().setPosition(field.getWolves().get(0).getPosition());
+
+        assertTrue(field.gameOver());
+    }
+
+    @Test
+    public void gameOver2() {
+        Field field = new Field(60, 30);
+
+        field.getLand().setType(5,1,2);
+        field.getSheep().setPosition(new Position(5,1));
+
+        assertTrue(field.gameOver());
+    }
+
+    @Test
+    public void gameOver3() {
+        Field field = new Field(60, 30);
+
+        field.getLand().setType(field.getWolves().get(0).getPosition().getX(),field.getWolves().get(0).getPosition().getY(),2);
+
+        assertTrue(field.gameOver());
+    }
+
+    @Test
+    public void gameOver4() {
+        Field field = new Field(60, 30);
+
+        field.getLand().setType(field.getSheep().getPosition().getX(),field.getSheep().getPosition().getY(),2);
+
+        assertTrue(field.gameOver());
+    }
+
+    @Test
+    public void win() {
+        Field field = new Field(60, 30);
+        int filledArea = 0;
+        for(int i = 2; i < 58; i++) {
+            for (int j = 2; j < 28; j++) {
+                field.getLand().setType(i,j,1);
+                if(filledArea > 162.4) break;
+                else if(1299.20 <= filledArea) assertTrue(field.win());
+                else assertFalse(field.win());
+                filledArea++;
+            }
+        }
+    }
+
 }

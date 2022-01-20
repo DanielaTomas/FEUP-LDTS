@@ -12,8 +12,8 @@ public class Wolf extends Element{
     @Override
     public void draw(TextGraphics graphics) {
         graphics.setForegroundColor(TextColor.Factory.fromString("#FF0000"));
-        graphics.enableModifiers(SGR.BOLD);
-        graphics.putString(new TerminalPosition(getPosition().getX(), getPosition().getY()),"L");
+        graphics.disableModifiers(SGR.BOLD);
+        graphics.putString(new TerminalPosition(getPosition().getX(), getPosition().getY()),"&");
     }
 
     public Position move() {
