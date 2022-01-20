@@ -73,7 +73,7 @@ public class Game {
             }
             else { //inside the game
                 key = screen.pollInput();
-                if (key != null && key.getKeyType() == KeyType.Character && key.getCharacter() == 'r') { //pause or restart the game
+                if (key != null && key.getKeyType() == KeyType.Character && key.getCharacter() == 'r') { //restart the game
                     goToMenu();
                     if(key.getCharacter() == 'r') field = new Field(60,30); //restart the game
                     oldKey = new KeyStroke(KeyType.ArrowRight);

@@ -7,14 +7,15 @@ public class PositionTest {
     public void testEquals1() {
         Position p1 = new Position(10,16);
         Position p2 = new Position(10,16);
-        assertEquals(p1, p2);
-
+        assertTrue(p1.equals(p2));
+        assertTrue(p1.hashCode() == p2.hashCode());
     }
 
     @Test
     public void testEquals2() {
         Position p1 = new Position(10,16);
         Position p2 = new Position(20, 5);
-        assertNotEquals(p1, p2);
+        assertFalse(p1.equals(p2));
+        assertFalse(p1.hashCode() == p2.hashCode());
     }
 }

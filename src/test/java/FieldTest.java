@@ -8,6 +8,7 @@ import com.googlecode.lanterna.terminal.DefaultTerminalFactory;
 import com.googlecode.lanterna.terminal.Terminal;
 import org.junit.jupiter.api.BeforeAll;
 import org.junit.jupiter.api.Test;
+import org.mockito.Mockito;
 
 import java.io.IOException;
 import java.util.Arrays;
@@ -126,6 +127,25 @@ public class FieldTest {
                     assertTrue(field.canWolvesMove(new Position(i, j)));
                 }
             }
+        }
+    }
+    public void auxCheckWolfStuck(Field field, int x, int y) {
+        field.getLand().setType(field.getWolves().get(0).getPosition().getX()+x,field.getWolves().get(0).getPosition().getY()+y,1);
+    }
+    @Test
+    public void checkWolfStuck() {
+        Field field = new Field(60, 30);
+        auxCheckWolfStuck(field,1,1); auxCheckWolfStuck(field,1,0);
+        auxCheckWolfStuck(field,0,1); auxCheckWolfStuck(field,1,-1);
+        auxCheckWolfStuck(field,-1,-1); auxCheckWolfStuck(field,-1,0);
+        auxCheckWolfStuck(field,0,-1); auxCheckWolfStuck(field,-1,1);
+
+        assertTrue(field.checkWolfStuck(field.getWolves().get(0)));
+        for(int i = 1; i < 5; i++) {
+         if(field.getWolves().get(0).getPosition().getX() != field.getWolves().get(i).getPosition().getX()
+             && field.getWolves().get(0).getPosition().getY() != field.getWolves().get(i).getPosition().getY()) {
+             assertFalse(field.checkWolfStuck(field.getWolves().get(i)));
+         }
         }
     }
 

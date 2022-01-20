@@ -44,14 +44,4 @@ public class GameTest {
         game.goToMenu();
         assertTrue(game.getMenu().isSelected());
     }
-    @Test
-    public void drawEndGame() throws IOException, URISyntaxException, FontFormatException {
-        Game game = new Game();
-        game.drawEndGame("Some Text");
-        TextGraphics mockGraphics = Mockito.mock(TextGraphics.class);
-        Mockito.verify(mockGraphics,times(1)).enableModifiers(SGR.BOLD);
-        Mockito.verify(mockGraphics,times(1)).setForegroundColor(TextColor.Factory.fromString("#DAA520"));
-        Mockito.verify(mockGraphics,times(1)).putString(new TerminalPosition(25, 10), "Some Text");
-        Mockito.verify(mockGraphics,times(1)).putString(new TerminalPosition(16, 20), "<< press enter to continue >>");
-    }
 }

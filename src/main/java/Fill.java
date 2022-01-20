@@ -23,26 +23,26 @@ public class Fill implements FillInterface {
         for(int i = 0; i < width-1; i++) {
             for(int j = 0; j < height-1; j++) {
                 if((land.getType(i,j) == 0))
-                    if (insideGrass(i,j) && verifyWolves(i,j)) boundaryFill(i, j);
+                    if (insideGrass(i, j) && verifyWolves(i, j)) boundaryFill(i, j);
             }
         }
     }
     @Override
     public boolean insideGrass(int x, int y) {
-        int down = y, up = y, left = x, right = x;
         boolean UP = false, DOWN = false, LEFT = false, RIGHT = false;
-        while(up > 1 || down < height-1 || right < width-1 || left > 1) {
-            if(land.getType(x,down) == 1 && (down+1 < height-2 || (x==2 || x == width-3))) DOWN = true;
-            if(land.getType(x,up) == 1 && (up-1 > 1 || (x == 2 || x == width-3)))  UP = true;
-            if(land.getType(left,y) == 1 && (left-1 > 1 || (y == 2 || y == height-3))) LEFT = true;
-            if(land.getType(right,y) == 1 && (right+1 < width-2 || (y == 2 || y == height-3))) RIGHT = true;
-            if(down < height-1) down++;
-            if(up > 1) up--;
-            if(right < width-1) right ++;
-            if(left > 1) left--;
-        }
-        if((UP && DOWN && LEFT) || (UP && DOWN && RIGHT) || (UP && RIGHT && LEFT)) return true;
-        else return LEFT && DOWN && RIGHT;
+        for(int down = y; down < height-1 || x==2 || x == width-3; down++)
+            if(land.getType(x,down) == 1) { DOWN = true; break; }
+
+        for(int up = y; up > 2 || x == 2 || x == width-3; up--)
+            if(land.getType(x,up) == 1) { UP = true; break; }
+
+        for(int left = x; left > 2 || y == 2 || y == height-3; left--)
+            if(land.getType(left,y) == 1) { LEFT = true; break; }
+
+        for(int right = x; right < width-1 || y == 2 || y == height-3; right++)
+            if(land.getType(right,y) == 1 && (right+1 < width-2 || (y == 2 || y == height-3))) { RIGHT = true; break; }
+
+        return (UP && DOWN && LEFT) || (UP && DOWN && RIGHT) || (UP && RIGHT && LEFT) || (LEFT && DOWN && RIGHT);
     }
     @Override
     public boolean verifyWolves(int x, int y) {

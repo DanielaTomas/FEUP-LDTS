@@ -121,18 +121,14 @@ public class Field implements Command, FieldInterface {
         for (int c = 0; c < width; c++) {
             transformers.add(new Fence(c, 0));
             transformers.add(new Fence(c, height - 1));
-            if(c != 0 || c < width - 1) {
-                transformers.add(new Grass(c, 1));
-                transformers.add(new Grass(c, height - 2));
-            }
+            transformers.add(new Grass(c, 1));
+            transformers.add(new Grass(c, height - 2));
         }
         for (int r = 1; r < height - 1; r++) {
             transformers.add(new Fence(0, r));
             transformers.add(new Fence(width - 1, r));
-            if(r < width - 2) {
-                transformers.add(new Grass(1, r));
-                transformers.add(new Grass(width - 2, r));
-            }
+            transformers.add(new Grass(1, r));
+            transformers.add(new Grass(width - 2, r));
         }
     }
     @Override
@@ -219,13 +215,13 @@ public class Field implements Command, FieldInterface {
         return this.wolves;
     }
     @Override
-    public Land getLand() {
-        return this.land;
-    }
-    @Override
     public void setLast(int x, int y) {
         last.setX(x);
         last.setY(y);
+    }
+    @Override
+    public Land getLand() {
+        return this.land;
     }
     @Override
     public void setLastSheep(int x, int y) {
