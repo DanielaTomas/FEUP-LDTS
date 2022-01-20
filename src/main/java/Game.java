@@ -73,7 +73,7 @@ public class Game {
             }
             else { //inside the game
                 key = screen.pollInput();
-                if (key != null && key.getKeyType() == KeyType.Character && (key.getCharacter() == 'p' || key.getCharacter() == 'r')) { //pause or restart the game
+                if (key != null && key.getKeyType() == KeyType.Character && key.getCharacter() == 'r') { //pause or restart the game
                     goToMenu();
                     if(key.getCharacter() == 'r') field = new Field(60,30); //restart the game
                     oldKey = new KeyStroke(KeyType.ArrowRight);
@@ -90,7 +90,7 @@ public class Game {
                     oldKey = new KeyStroke(KeyType.ArrowRight);
                 }
                 else {
-                    if(key != null) oldKey = key;
+                    if(key != null && (key.getKeyType() != KeyType.Character || (key.getKeyType() == KeyType.Character && (key.getCharacter() == 'p')))) oldKey = key;
                     screen.clear();
                     field.processKey(oldKey, graphics); //process the game
                     screen.refresh();
@@ -116,7 +116,6 @@ public class Game {
     }
     public void drawEndGame(String str) throws IOException {
         screen.clear();
-        graphics.fillRectangle(new TerminalPosition(25, 9), new TerminalSize(7, 3), ' ');
         graphics.enableModifiers(SGR.BOLD);
         graphics.setForegroundColor(TextColor.Factory.fromString("#DAA520"));
         graphics.putString(new TerminalPosition(25, 10), str);

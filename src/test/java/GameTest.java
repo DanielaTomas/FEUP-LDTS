@@ -1,10 +1,15 @@
+import com.googlecode.lanterna.SGR;
+import com.googlecode.lanterna.TerminalPosition;
 import com.googlecode.lanterna.TerminalSize;
+import com.googlecode.lanterna.TextColor;
+import com.googlecode.lanterna.graphics.TextGraphics;
 import com.googlecode.lanterna.input.KeyStroke;
 import com.googlecode.lanterna.input.KeyType;
 import com.googlecode.lanterna.screen.TerminalScreen;
 import com.googlecode.lanterna.terminal.DefaultTerminalFactory;
 import org.junit.jupiter.api.BeforeAll;
 import org.junit.jupiter.api.Test;
+import org.mockito.Mockito;
 
 import java.awt.*;
 import java.io.IOException;
@@ -12,6 +17,7 @@ import java.net.URISyntaxException;
 
 import static org.junit.jupiter.api.Assertions.assertEquals;
 import static org.junit.jupiter.api.Assertions.assertTrue;
+import static org.mockito.Mockito.times;
 
 public class GameTest {
     @Test
@@ -38,5 +44,14 @@ public class GameTest {
         game.goToMenu();
         assertTrue(game.getMenu().isSelected());
     }
-
+    @Test
+    public void drawEndGame() throws IOException, URISyntaxException, FontFormatException {
+        Game game = new Game();
+        game.drawEndGame("Some Text");
+        TextGraphics mockGraphics = Mockito.mock(TextGraphics.class);
+        Mockito.verify(mockGraphics,times(1)).enableModifiers(SGR.BOLD);
+        Mockito.verify(mockGraphics,times(1)).setForegroundColor(TextColor.Factory.fromString("#DAA520"));
+        Mockito.verify(mockGraphics,times(1)).putString(new TerminalPosition(25, 10), "Some Text");
+        Mockito.verify(mockGraphics,times(1)).putString(new TerminalPosition(16, 20), "<< press enter to continue >>");
+    }
 }
