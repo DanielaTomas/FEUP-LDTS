@@ -43,7 +43,7 @@ public class Fill implements FillInterface {
         for(int right = x; right < width-2 || y == 2 || y == height-3; right++)
             if(land.getType(right,y) == 1) { RIGHT = true; break; }
 
-        return (UP && ((DOWN && LEFT) || (DOWN && RIGHT) || (RIGHT && LEFT))) || (LEFT && DOWN && RIGHT);
+        return (UP && ((DOWN && (LEFT || RIGHT)) || (RIGHT && LEFT))) || (LEFT && DOWN && RIGHT);
     }
     @Override
     public boolean verifyWolves(int x, int y) {
