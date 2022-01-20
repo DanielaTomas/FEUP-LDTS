@@ -22,15 +22,16 @@ public class Fill implements FillInterface {
     public void insideGrass(){
         for(int i = 0; i < width-1; i++) {
             for(int j = 0; j < height-1; j++) {
-                if((land.getType(i,j) == 0))
-                    if (insideGrass(i, j) && verifyWolves(i, j)) boundaryFill(i, j);
+                if((land.getType(i,j) == 0)) {
+                    if (verifyWolves(i, j) && insideGrass(i,j)) boundaryFill(i, j);
+                }
             }
         }
     }
     @Override
     public boolean insideGrass(int x, int y) {
         boolean UP = false, DOWN = false, LEFT = false, RIGHT = false;
-        for(int down = y; down < height-1 || x==2 || x == width-3; down++)
+        for(int down = y; down < height-1 || x == 2 || x == width-3; down++)
             if(land.getType(x,down) == 1) { DOWN = true; break; }
 
         for(int up = y; up > 2 || x == 2 || x == width-3; up--)
@@ -40,7 +41,7 @@ public class Fill implements FillInterface {
             if(land.getType(left,y) == 1) { LEFT = true; break; }
 
         for(int right = x; right < width-1 || y == 2 || y == height-3; right++)
-            if(land.getType(right,y) == 1 && (right+1 < width-2 || (y == 2 || y == height-3))) { RIGHT = true; break; }
+            if(land.getType(right,y) == 1) { RIGHT = true; break; }
 
         return (UP && DOWN && LEFT) || (UP && DOWN && RIGHT) || (UP && RIGHT && LEFT) || (LEFT && DOWN && RIGHT);
     }
