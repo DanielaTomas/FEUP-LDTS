@@ -1,35 +1,12 @@
-import com.googlecode.lanterna.TerminalSize;
-import com.googlecode.lanterna.graphics.TextGraphics;
-import com.googlecode.lanterna.input.KeyStroke;
-import com.googlecode.lanterna.input.KeyType;
-import com.googlecode.lanterna.screen.Screen;
-import com.googlecode.lanterna.screen.TerminalScreen;
-import com.googlecode.lanterna.terminal.DefaultTerminalFactory;
-import com.googlecode.lanterna.terminal.Terminal;
-import org.junit.jupiter.api.BeforeAll;
 import org.junit.jupiter.api.Test;
-import org.mockito.Mockito;
 
-import java.io.IOException;
 import java.util.ArrayList;
-import java.util.Arrays;
 import java.util.List;
 
 import static org.junit.jupiter.api.Assertions.*;
 
 public class FillTest {
-    private static Terminal terminal;
-    private static TextGraphics graphics;
-    private static Screen screen;
 
-    @BeforeAll
-    public static void start() throws IOException {
-        TerminalSize terminalSize = new TerminalSize(0, 0);
-        DefaultTerminalFactory terminalFactory = new DefaultTerminalFactory().setInitialTerminalSize(terminalSize);
-        terminal = terminalFactory.createTerminal();
-        screen = new TerminalScreen(terminal);
-        graphics = screen.newTextGraphics();
-    }
     public void setTypeH(Land land, int x1, int x2, int j, int type){
         for(int i = x1; i < x2; i++){
             land.setType(i,j,type);
