@@ -210,5 +210,29 @@ public class FieldTest {
             }
         }
     }
+    @Test
+    public void testCreateFirst(){
+        Field field = new Field(60, 30);
+        field.createTypes();
+        for(int i=0; i < 60; i++){
+            assertEquals(3,field.getLand().getType(i,0));
+            assertEquals(3,field.getLand().getType(i,29));
+        }
+        for(int i=1; i < 59; i++) {
+            assertEquals(1, field.getLand().getType(i, 1));
+            assertEquals(1,field.getLand().getType(i,28));
+        }
+        for(int j = 0; j < 30; j++){
+            assertEquals(3,field.getLand().getType(0,j));
+            assertEquals(3,field.getLand().getType(59,j));
+        }
+        for(int j = 1; j < 29; j++){
+            assertEquals(1,field.getLand().getType(1,j));
+            assertEquals(1,field.getLand().getType(58,j));
+        }
+    }
+    @Test
+    public void testMoveWolves(){
 
+    }
 }

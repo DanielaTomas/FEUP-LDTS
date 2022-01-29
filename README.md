@@ -22,10 +22,12 @@ The following screenshots show the general look of our game.
 
 ### Game
 
-[![Game](https://user-images.githubusercontent.com/93272180/149990293-7d5580ba-9a19-45eb-9e03-8d6f46eb2f7d.jpeg)](./docs/Images/Screenshots)
-
-[![Playing game](https://user-images.githubusercontent.com/93272180/149990001-ca9d16a6-68d3-447c-a3dd-0c09d54e0c56.jpeg)](./docs/Images/Screenshots)
+![Game](./docs/Images/Screenshots/Game.png)
 
 ### Game Over
 
 [![Game Over](https://user-images.githubusercontent.com/93272180/149990439-0805f40d-611e-4719-88a2-326068fb5a3d.jpeg)](./docs/Images/Screenshots)
+
+### You Won
+
+![You Won](./docs/Images/Screenshots/YouWon.png)
